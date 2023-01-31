@@ -1,0 +1,42 @@
+unit uFrmPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,uFrmCadastrarCliente;
+
+type
+  TFrmPrincipal = class(TForm)
+    btnCliente: TBitBtn;
+    procedure btnClienteClick(Sender: TObject);
+  private
+    Procedure AbrirCliente;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.AbrirCliente;
+begin
+  FrmCadastrarCliente := TFrmCadastrarCliente.Create(nil);
+  try
+    FrmCadastrarCliente.ShowModal;
+  finally
+    FreeAndNil(FrmCadastrarCliente);
+  end;
+end;
+
+procedure TFrmPrincipal.btnClienteClick(Sender: TObject);
+begin
+  AbrirCliente;
+end;
+
+end.

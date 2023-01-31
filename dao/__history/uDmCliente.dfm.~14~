@@ -1,0 +1,184 @@
+object DmCliente: TDmCliente
+  OldCreateOrder = False
+  Height = 371
+  Width = 335
+  object sqlPesquisar: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'SELECT idpessoa,nmprimeiro,nmsegundo '
+      'FROM cad.Pessoa'
+      'WHERE (nmprimeiro like :nome)')
+    Left = 48
+    Top = 64
+    ParamData = <
+      item
+        Position = 1
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object sqlAlterar: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'UPDATE cad.pessoa'
+      
+        #9'SET idpessoa=:id, flnatureza=:natureza, dsdocumento=:documento,' +
+        ' nmprimeiro=:nome, nmsegundo= :Sobrenome, dtregistro= :dtregistr' +
+        'o'
+      #9'WHERE idPessoa = :id;')
+    Left = 240
+    Top = 64
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'NATUREZA'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'DOCUMENTO'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'SOBRENOME'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'DTREGISTRO'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+  end
+  object sqlExcluir: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'DELETE FROM cad.pessoa'
+      #9'WHERE idpessoa = :id;')
+    Left = 176
+    Top = 64
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sqlInserir: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'INSERT INTO cad.pessoa('
+      
+        #9'idpessoa, flnatureza, dsdocumento, nmprimeiro, nmsegundo, dtreg' +
+        'istro)'
+      
+        #9'VALUES (:id,:natureza,:documento, :nome, :sobrenome, :dtregistr' +
+        'o);')
+    Left = 112
+    Top = 64
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'NATUREZA'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'DOCUMENTO'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'SOBRENOME'
+        DataType = ftString
+        ParamType = ptInput
+      end
+      item
+        Name = 'DTREGISTRO'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+  end
+  object tbCliente: TFDTable
+    Connection = DMConexao.FDConexao
+    SchemaName = 'cad'
+    TableName = 'cad.pessoa'
+    Left = 136
+    Top = 232
+    object tbClienteidpessoa: TLargeintField
+      FieldName = 'idpessoa'
+      Origin = 'idpessoa'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object tbClienteflnatureza: TLargeintField
+      FieldName = 'flnatureza'
+      Origin = 'flnatureza'
+    end
+    object tbClientedsdocumento: TWideStringField
+      FieldName = 'dsdocumento'
+      Origin = 'dsdocumento'
+    end
+    object tbClientenmprimeiro: TWideStringField
+      FieldName = 'nmprimeiro'
+      Origin = 'nmprimeiro'
+      Size = 100
+    end
+    object tbClientenmsegundo: TWideStringField
+      FieldName = 'nmsegundo'
+      Origin = 'nmsegundo'
+      Size = 100
+    end
+    object tbClientedtregistro: TDateField
+      FieldName = 'dtregistro'
+      Origin = 'dtregistro'
+    end
+  end
+  object cdsPesquisar: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftUnknown
+        ParamType = ptUnknown
+      end>
+    ProviderName = 'dspPesquisar'
+    Left = 48
+    Top = 228
+    object cdsPesquisaridpessoa: TLargeintField
+      FieldName = 'idpessoa'
+    end
+    object cdsPesquisarnmprimeiro: TWideStringField
+      FieldName = 'nmprimeiro'
+      Size = 100
+    end
+    object cdsPesquisarnmsegundo: TWideStringField
+      FieldName = 'nmsegundo'
+      Size = 100
+    end
+  end
+  object dspPesquisar: TDataSetProvider
+    DataSet = sqlPesquisar
+    Left = 48
+    Top = 152
+  end
+end

@@ -1,0 +1,59 @@
+unit uClienteModel;
+
+interface
+
+uses
+  SysUtils;
+type
+ TCliente = class
+ private
+
+    FID: Integer;
+    FNatureza: Integer;
+    FDocumento: string;
+    FNome: string;
+    FSobrenome: string;
+    FDtRegistro:TDateTime;
+    FCep:string;
+
+
+
+    procedure SetNome(const Value: string);
+    procedure SetSobrenome(const Value: String);
+   { private declarations }
+
+ public
+   { public declarations }
+   property ID: Integer read FID write FID;
+   property Natureza : Integer read FNatureza write FNatureza;
+   property Documento : string read FDocumento write FDocumento;
+   property Nome : string  read FNome write SetNome;
+   property Sobrenome : string   read FSobrenome write SetSobrenome;
+   property DtRegistro : TDateTime read FDtRegistro write FDtRegistro;
+   property Cep : string read FCep write FCep;
+
+ end;
+implementation
+
+{ TCliente }
+
+
+
+{ TCliente }
+
+procedure TCliente.SetSobrenome(const Value: String);
+begin
+  if Value = EmptyStr then
+    raise EArgumentException.Create('"Sobrenome" Precisa ser preenchido');
+    FSobrenome := Value;
+end;
+
+procedure TCliente.SetNome(const Value: String);
+begin
+  if Value = EmptyStr then
+    raise EArgumentException.Create('"Nome" Precisa ser preenchido');
+    FNome := Value;
+end;
+
+
+end.

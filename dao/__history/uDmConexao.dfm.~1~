@@ -1,0 +1,9 @@
+object DMConexao: TDMConexao
+  OldCreateOrder = False
+  Height = 150
+  Width = 215
+  object FDConexao: TFDConnection
+    Left = 88
+    Top = 40
+  end
+end

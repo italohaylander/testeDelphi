@@ -1,0 +1,32 @@
+unit uClienteModel;
+
+interface
+
+uses
+  SysUtils;
+type
+ TCliente = class
+ private
+    FSobrenome: string;
+    FCep: Integer;
+    FID: Integer;
+    FNome: string;
+    procedure SetCep(const Value: Integer);
+   { private declarations }
+
+ public
+   { public declarations }
+   property ID: Integer read FID write FID;
+   property Nome : string  read FNome write FNome;
+   property Sobrenome :string   read FSobrenome write FSobrenome;
+   property Cep : Integer read FCep write SetCep;
+
+
+ end;
+implementation
+
+{ TCliente }
+
+
+
+end.

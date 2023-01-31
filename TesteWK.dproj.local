@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/01/06 23:03:47.000.934,=C:\Users\italo\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/06 23:04:46.000.662,C:\Users\italo\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\view\uFrmPrincipal.pas</Transaction>
+    <Transaction>2023/01/06 23:04:46.000.662,C:\Users\italo\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\view\uFrmPrincipal.dfm</Transaction>
+    <Transaction>2023/01/06 23:05:02.000.555,C:\Users\italo\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\TesteWK.dproj</Transaction>
+    <Transaction>2023/01/06 23:06:48.000.865,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/06 23:07:49.000.508,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\view\uFrmCadastrarCliente.pas</Transaction>
+    <Transaction>2023/01/06 23:07:49.000.508,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.dfm=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\view\uFrmCadastrarCliente.dfm</Transaction>
+    <Transaction>2023/01/16 00:24:42.000.250,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/16 00:25:04.000.505,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\model\uClienteModel.pas</Transaction>
+    <Transaction>2023/01/16 00:41:40.000.890,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/16 00:42:07.000.133,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\controller\uClienteController.pas</Transaction>
+    <Transaction>2023/01/16 00:47:38.000.499,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/16 00:51:38.000.794,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\dao\uDmConexao.pas</Transaction>
+    <Transaction>2023/01/16 00:51:38.000.794,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.dfm=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\dao\uDmConexao.dfm</Transaction>
+    <Transaction>2023/01/16 11:46:36.000.072,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/16 11:46:54.000.519,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\uDmCliente.dfm=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.dfm</Transaction>
+    <Transaction>2023/01/16 11:46:54.000.519,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\uDmCliente.pas=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\Unit1.pas</Transaction>
+    <Transaction>2023/01/16 11:56:03.000.941,C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\uDmCliente.pas=</Transaction>
+    <Transaction>2023/01/16 11:56:20.000.531,=C:\Users\italo\OneDrive\Área de Trabalho\Test Wk\dao\uDmCliente.pas</Transaction>
+  </Transactions>
+</BorlandProject>

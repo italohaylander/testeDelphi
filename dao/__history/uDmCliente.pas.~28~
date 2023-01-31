@@ -1,0 +1,180 @@
+unit uDmCliente;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.FMTBcd,
+  Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, uDmConexao, uClienteModel;
+
+type
+  TDmCliente = class(TDataModule)
+    sqlPesquisar: TFDQuery;
+    sqlAlterar: TFDQuery;
+    sqlExcluir: TFDQuery;
+    sqlInserir: TFDQuery;
+    tbCliente: TFDTable;
+    tbClienteidpessoa: TLargeintField;
+    tbClienteflnatureza: TLargeintField;
+    tbClientedsdocumento: TWideStringField;
+    tbClientenmprimeiro: TWideStringField;
+    tbClientenmsegundo: TWideStringField;
+    tbClientedtregistro: TDateField;
+    dspPesquisar: TDataSetProvider;
+    cdsPesquisar: TClientDataSet;
+    cdsPesquisaridpessoa: TLargeintField;
+    cdsPesquisarnmprimeiro: TWideStringField;
+    cdsPesquisarnmsegundo: TWideStringField;
+  private
+    { Private declarations }
+  public
+    function gerarId():integer;
+    procedure pesquisar(sNome:string);
+    procedure carregarCliente(oCliente:TCliente;iCodigo:Integer);
+    function inserirCliente(oCliente:TCliente; out sErro:string):Boolean;
+    function alterarCliente(oCliente:TCliente; out sErro:string):Boolean;
+    function excluirCliente(iCodigo:integer;out sErro:string):Boolean;
+    { Public declarations }
+  end;
+
+var
+  DmCliente: TDmCliente;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TDmCliente }
+
+function TDmCliente.alterarCliente(oCliente: TCliente;
+  out sErro: string): Boolean;
+begin
+  with sqlAlterar,oCliente do
+  begin
+    Params[0].AsInteger := ID;
+    Params[1].AsInteger := Natureza;
+    Params[2].AsString := Documento;
+    Params[3].AsString := Nome;
+    Params[4].AsString := Sobrenome;
+    Params[5].AsDateTime := DtRegistro;
+
+    try
+      ExecSql;
+      Result := True;
+    except on E: Exception do
+     begin
+      sErro := 'Ocorreu um erro ao alterar cliente:' + sLineBreak + E.Message;
+      Result := False;
+     end;
+    end;
+  end;
+end;
+
+procedure TDmCliente.carregarCliente(oCliente: TCliente; iCodigo: Integer);
+var
+  sqlCliente: TFDQuery;
+begin
+   sqlCliente := TFDQuery.Create(nil);
+   try
+     with sqlCLiente do
+     begin
+      connection := DmConexao.FDConexao;
+      SQL.Text := 'select * from cad.pessoa where idpessoa = '+ IntToStr(iCodigo);
+      open;
+      first;
+      with oCliente do
+      begin
+        ID := FieldByName('idPessoa').AsInteger;
+        Natureza  := FieldByName('flnatureza').AsInteger;
+        Documento := FieldByName('dsdocumento').AsString;
+        Nome := FieldByName('nmprimeiro').AsString;
+        Sobrenome := FieldByName('nmsegundo').AsString;
+        DtRegistro := FieldByName('dtregistro').AsDateTime;
+      end;
+     end;
+
+   finally
+     FreeAndNil(sqlCliente);
+   end;
+end;
+
+function TDmCliente.excluirCliente(iCodigo: integer;
+  out sErro: string): Boolean;
+begin
+  with sqlExcluir do
+  begin
+    Params[0].AsInteger := iCodigo;
+    try
+      ExecSql;
+      Result := True;
+    except on E: Exception do
+      begin
+       sErro := 'Ocorreu um erro ao excluir cliente:' + sLineBreak + E.Message;
+       Result := False;
+      end;
+    end;
+  end;
+end;
+
+function TDmCliente.gerarId: integer;
+var
+  sqlSequencia: TFDQuery;
+begin
+  sqlSequencia := TFDQuery.Create(nil);
+  try
+    with sqlSequencia do
+    begin
+      Connection := DMConexao.FDConexao;
+      SQL.Text := 'select coalesce(max(idpessoa), 0) + 1 as seq from cad.pessoa';
+      Open;
+      Result := FieldByName('seq').AsInteger;
+    end;
+
+  finally
+    FreeAndNil(sqlSequencia);
+  end;
+end;
+
+function TDmCliente.inserirCliente(oCliente: TCliente;
+  out sErro: string): Boolean;
+begin
+  with sqlInserir,oCliente do
+  begin
+
+    Params[0].AsInteger := gerarId;
+    Params[1].AsInteger := Natureza;
+    Params[2].AsString := Documento;
+    Params[3].AsString := Nome;
+    Params[4].AsString := Sobrenome;
+    Params[5].AsDateTime := DtRegistro;
+
+    try
+      ExecSql;
+      Result := True;
+    except on E: Exception do
+     begin
+      sErro := 'Ocorreu um erro ao inserir cliente:' + sLineBreak + E.Message;
+      Result := False;
+     end;
+    end;
+  end;
+end;
+
+procedure TDmCliente.pesquisar(sNome: string);
+begin
+
+  with sqlPesquisar do
+  begin
+    if Active then
+      close;
+    Params[0].AsString := '%' + sNome;
+    Open;
+    First;
+  end;
+end;
+
+end.
