@@ -9,7 +9,9 @@ uses
 type
   TFrmPrincipal = class(TForm)
     btnCliente: TBitBtn;
+    BitBtn1: TBitBtn;
     procedure btnClienteClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     Procedure AbrirCliente;
     { Private declarations }
@@ -32,6 +34,12 @@ begin
   finally
     FreeAndNil(FrmCadastrarCliente);
   end;
+end;
+
+procedure TFrmPrincipal.BitBtn1Click(Sender: TObject);
+
+begin
+   Application.MessageBox('ola Senhor italo','Boas Vindas',MB_OK);
 end;
 
 procedure TFrmPrincipal.btnClienteClick(Sender: TObject);

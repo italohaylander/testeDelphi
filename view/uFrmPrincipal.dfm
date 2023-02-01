@@ -23,4 +23,13 @@ object FrmPrincipal: TFrmPrincipal
     TabOrder = 0
     OnClick = btnClienteClick
   end
+  object BitBtn1: TBitBtn
+    Left = 264
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Teste'
+    TabOrder = 1
+    OnClick = BitBtn1Click
+  end
 end
